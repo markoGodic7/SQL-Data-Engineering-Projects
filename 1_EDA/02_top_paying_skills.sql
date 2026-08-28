@@ -19,10 +19,11 @@ INNER JOIN skills_dim AS sd
 WHERE
     jpf.job_title_short = 'Data Engineer'
     AND jpf.job_work_from_home = True
+    AND jpf.salary_year_avg IS NOT NULL
 GROUP BY 
     sd.skills
 HAVING
-    COUNT(jpf.*) > 100
+    COUNT(jpf.*) >= 100
 ORDER BY 
     median_salary DESC
 LIMIT 25;
