@@ -26,8 +26,8 @@ GROUP BY
     sd.skills
 HAVING
     COUNT(jpf.*) >= 100
-ORDER BY 
-    optimal_score DESC
+ORDER BY MEDIAN(jpf.salary_year_avg) * LN(COUNT(jpf.*)) / 1000000 DESC,
+    sd.skills ASC
 LIMIT 25;
 
 
